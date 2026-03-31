@@ -225,6 +225,7 @@ void Light3D::set_extra_cull_margin(float p_margin) {
 	ERR_FAIL_COND(p_margin < 0);
 	extra_cull_margin = p_margin;
 	RS::get_singleton()->instance_set_extra_visibility_margin(get_instance(), extra_cull_margin);
+	RS::get_singleton()->light_set_extra_cull_margin(light, extra_cull_margin);
 }
 
 float Light3D::get_extra_cull_margin() const {
