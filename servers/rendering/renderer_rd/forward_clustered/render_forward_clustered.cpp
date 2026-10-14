@@ -1425,17 +1425,16 @@ void RenderForwardClustered::setup_added_reflection_probe(const Transform3D &p_t
 }
 
 void RenderForwardClustered::setup_added_light(const RSE::LightType p_type, const Transform3D &p_transform, float p_radius, float p_spot_aperture, const Vector2 &p_area_size, float p_extra_cull_margin) {
-		ClusterBuilderRD::LightType type;
-		if (p_type == RSE::LIGHT_SPOT) {
-			type = ClusterBuilderRD::LIGHT_TYPE_SPOT;
-		} else if (p_type == RSE::LIGHT_OMNI) {
-			type = ClusterBuilderRD::LIGHT_TYPE_OMNI;
-		} else {
-			type = ClusterBuilderRD::LIGHT_TYPE_AREA;
-		}
-
-		current_cluster_builder->add_light(type, p_transform, p_radius, p_spot_aperture, p_area_size, p_extra_cull_margin);
+	ClusterBuilderRD::LightType type;
+	if (p_type == RSE::LIGHT_SPOT) {
+		type = ClusterBuilderRD::LIGHT_TYPE_SPOT;
+	} else if (p_type == RSE::LIGHT_OMNI) {
+		type = ClusterBuilderRD::LIGHT_TYPE_OMNI;
+	} else {
+		type = ClusterBuilderRD::LIGHT_TYPE_AREA;
 	}
+
+	current_cluster_builder->add_light(type, p_transform, p_radius, p_spot_aperture, p_area_size, p_extra_cull_margin);
 }
 
 void RenderForwardClustered::setup_added_decal(const Transform3D &p_transform, const Vector3 &p_half_size) {
