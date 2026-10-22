@@ -261,7 +261,7 @@ public:
 		// If the spot angle is above the threshold, we need a sphere instead of a cone for building the clusters
 		// since the cone gets too flat/large (spot angle close to 90 degrees) or
 		// can't even cover the affected area of the light (spot angle above 90 degrees).
-		if (p_type == LIGHT_TYPE_OMNI || (p_type == LIGHT_TYPE_SPOT && (p_spot_aperture + p_extra_cull_margin) > WIDE_SPOT_ANGLE_THRESHOLD_DEG)) {
+		if (p_type == LIGHT_TYPE_OMNI || (p_type == LIGHT_TYPE_SPOT && (p_spot_aperture > WIDE_SPOT_ANGLE_THRESHOLD_DEG || p_extra_cull_margin > 0))) {
 			radius *= shared->sphere_overfit; // Overfit icosphere.
 
 			float depth = -xform.origin.z;
